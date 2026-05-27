@@ -141,6 +141,7 @@ async function createTicket(event) {
         formMessage.innerHTML = `<div class="message ok">Ticket ${escapeHtml(created.ticket_id || "created")} created successfully.</div>`;
         event.target.reset();
         await loadTickets();
+        setTimeout(() => { formMessage.innerHTML = ""; }, 4000);
     } catch (error) {
         formMessage.innerHTML = `<div class="message err">${escapeHtml(error.message)}</div>`;
     }
@@ -223,6 +224,10 @@ async function updateTicket(event) {
         detailMessage.innerHTML = `<div class="message ok">Ticket updated.</div>`;
         await loadTickets();
         await showTicketDetail(ticketId);
+        setTimeout(() => {
+            const dm = document.getElementById("detailMessage");
+            if (dm) dm.innerHTML = "";
+        }, 4000);
     } catch (error) {
         detailMessage.innerHTML = `<div class="message err">${escapeHtml(error.message)}</div>`;
     }
