@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://crm-ticket-system-production-17f2.up.railway.app";
 
 const state = {
     tickets: [],

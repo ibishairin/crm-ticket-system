@@ -7,6 +7,9 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 from uuid import uuid4
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
 
 app = FastAPI()
 
@@ -71,6 +74,7 @@ def update_ticket(ticket_id: str,ticket_update: TicketUpdate,db: Annotated[Sessi
     if not ticket:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="Ticket not found")
     ticket.status = ticket_update.status.value.capitalize()
+    ticket.updated_at = datetime.now(ZoneInfo("Asia/Kolkata"))
     if ticket_update.notes:
         new_note = Note(ticket_id=ticket.ticket_id,note_text=ticket_update.notes)
         db.add(new_note)
