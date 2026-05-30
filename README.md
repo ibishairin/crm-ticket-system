@@ -6,8 +6,6 @@ A simple CRM-style ticket management system built with FastAPI, SQLite, HTML, CS
 
 **Application:** https://crm-ticket-system-a2ub.vercel.app/#/
 
-**Demo Video:** https://youtu.be/BRfnQ1HYq4M
-
 ## Features
 
 * Create support tickets
